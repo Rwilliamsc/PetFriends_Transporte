@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class EntregaService {
@@ -24,5 +25,17 @@ public class EntregaService {
         entregaRepository.save(novaEntrega);
 
         System.out.println("Entrega criada e salva para o pedido: " + pedidoEventoDto.getPedidoId());
+    }
+
+    public List<Entrega> getAll() {
+        return entregaRepository.findAll();
+    }
+
+    public List<Entrega> findByPedidoId(Long id) {
+        return entregaRepository.findByPedidoId(id);
+    }
+
+    public List<Entrega> findByStatus(String status) {
+        return entregaRepository.findByStatus(status);
     }
 }
